@@ -1,9 +1,9 @@
 <template>
-  <v-container class="spacing-playground pa-4">
+  <v-container class="spacing-playground pa-4" v-if="isDone()">
     <div class="row align-items-center">
       <div class="col-md-4">
         <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
+          :src="staff.photo"
           alt=""
           class="contact-img-big"
         />
@@ -11,19 +11,19 @@
       <div class="col-md-6">
         <ul class="list-group">
           <li class="list-group-item">
-            Name: <span class="fw-bold">Name</span>
+            Name: <span class="fw-bold">{{staff.name}}</span>
           </li>
           <li class="list-group-item">
-            Email: <span class="fw-bold">Email</span>
+            Email: <span class="fw-bold">{{staff.email}}</span>
           </li>
           <li class="list-group-item">
-            Mobile: <span class="fw-bold">Mobile</span>
+            Mobile: <span class="fw-bold">{{staff.mobile}}</span>
           </li>
           <li class="list-group-item">
-            Department: <span class="fw-bold">Department</span>
+            Department: <span class="fw-bold">{{staff.department}}</span>
           </li>
           <li class="list-group-item">
-            Designation: <span class="fw-bold">Designation</span>
+            Designation: <span class="fw-bold">{{staff.designation}}</span>
           </li>
         </ul>
       </div>
@@ -32,10 +32,35 @@
           <router-link to="/" class="btn btn-success">Back</router-link>
         </div>
       </div>
-    </div>
+    </div> 
   </v-container>
 </template>
 <script>
-export default {};
+import { StaffServices } from '../../services/StaffServices';
+
+export default {
+  name: "ViewStaff",
+  data: function (){
+    return {
+      staffId : this.$route.params.staffId,
+      satff : {},
+      err: null 
+    }
+  },
+  created: async function () {
+    try{
+      let res = await StaffServices.getStaff(this.staffId)
+      this.staff = res.data
+    }
+    catch(err){
+      this.err = err
+    }
+  },
+  methods: {
+    isDone:function(){
+      return Object.keys(this.staff).length > 0; 
+    }
+  },
+};
 </script>
 <style lang=""></style>

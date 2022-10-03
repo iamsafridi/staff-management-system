@@ -24,15 +24,15 @@
       </div>
     </form>
   </v-container>
-  <v-container>
+  <v-container v-if="staffs.length > 0">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6"  v-for="staff of staffs" :key="staff" >
         <div class="card list-group-item-success shadow-lg">
           <div class="card-body">
             <div class="row align-items-center">
               <div class="col-sm-4">
                 <img
-                  src="https://www.w3schools.com/howto/img_avatar.png"
+                  :src="staff.photo"
                   alt="img"
                   class="contact-img"
                 />
@@ -40,13 +40,13 @@
               <div class="col-sm-7">
                 <ul class="list-group">
                   <li class="list-group-item">
-                    Name: <span class="fw-bold">Name</span>
+                    Name: <span class="fw-bold">{{staff.name}}</span>
                   </li>
                   <li class="list-group-item">
-                    Email: <span class="fw-bold">Name</span>
+                    Email: <span class="fw-bold">{{staff.email}}</span>
                   </li>
                   <li class="list-group-item">
-                    Mobile: <span class="fw-bold">Name</span>
+                    Mobile: <span class="fw-bold">{{staff.mobile}}</span>
                   </li>
                 </ul>
               </div>
@@ -54,7 +54,7 @@
                 class="col-sm-1 d-flex flex-column justify-content-center align-items-center"
               >
                 <router-link
-                  to="/staffs/view/:staffId"
+                  :to="`/staffs/view/${staff.id}`" 
                   class="btn btn-warning my-1"
                 >
                   <v-icon style="font-size: 15px" dark>
@@ -62,7 +62,7 @@
                   </v-icon>
                 </router-link>
                 <router-link
-                  to="/staffs/edit/:staffId"
+                  :to="`/staffs/edit/${staff.id}`"
                   class="btn btn-primary my-1"
                 >
                   <v-icon style="font-size: 15px" dark> mdi-pencil </v-icon>

@@ -37,6 +37,10 @@
   </v-container>
 </template>
 <script>
-export default {};
+export default {
+  data: function(){
+    staffId: this.$route.params.staffId 
+  }
+};
 </script>
 <style lang=""></style>
