@@ -1,0 +1,22 @@
+{
+  "Staffs": [
+    {
+      "id": "1",
+      "name": "Shahid",
+      "email": "shahid@gmail.com",
+      "mobile": "012355584",
+      "photo": "https://www.bootdey.com/app/webroot/img/Content/avatar/avatar7.png",
+      "department": "IT",
+      "designation": "Senior IT Officer"
+    },
+    {
+      "id": "2",
+      "name": "Afridi",
+      "email": "Afridi@gmail.com",
+      "mobile": "879513200",
+      "photo": "https://www.bootdey.com/app/webroot/img/Content/avatar/avatar8.png",
+      "department": "IT",
+      "designation": "Junior IT Officer"
+    }
+  ]
+}
